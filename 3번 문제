@@ -1,0 +1,22 @@
+import re
+
+def extract_emails(text):
+    email_pattern = r'[a-zA-Z0-9]\S+@[a-zA-Z0-9.]+[a-zA-Z]'
+    
+    emails = re.findall(email_pattern, text)
+    return emails
+
+def main():
+    input_text = input("텍스트를 입력하세요: ")
+    
+    extracted_emails = extract_emails(input_text)
+    
+    if extracted_emails:
+        print("추출된 이메일 주소:")
+        for email in extracted_emails:
+            print(email)
+    else:
+        print("이메일 주소가 발견되지 않았습니다.")
+
+if __name__ == "__main__":
+    main()
