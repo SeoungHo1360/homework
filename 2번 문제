@@ -1,0 +1,31 @@
+def get_integer_list():
+    while True:
+        user_input = input("Enter integers separated by spaces (or 'done' to exit) ==> ")
+        if user_input == 'done':
+            print("program terminated. good bye !!")
+            return None
+        integer_list = user_input.split()
+        if all(map(lambda x: x.isdigit(), integer_list)):
+            return list(map(int, integer_list))
+        else:
+            print("must enter integers separated by spaces")
+
+def calculate_sum_recursive(numbers):
+    if not numbers:
+        return 0
+    else:
+        return numbers[0] + calculate_sum_recursive(numbers[1:])
+
+def main():
+    while True:
+        integer_list = get_integer_list()
+        if integer_list is None:
+            break
+        elif len(integer_list) < 2:
+            print("must enter more than one integer")
+        else:
+            total = calculate_sum_recursive(integer_list)
+            print("The sum of the input integers is ==> {}".format(total))
+
+if __name__ == "__main__":
+    main()
